@@ -12,10 +12,12 @@ public class ConfigGetters {
     public static boolean healBeforeBattle;
     public static List<String> levelCaps;
     public static String alreadyBattlingMessage;
+    public static String alreadyQueuedMessage;
     public static String blacklistedPokemonMessage;
     public static String eloLoseMessage;
     public static String eloWinMessage;
     public static String levelCapMessage;
+    public static String queueExpiredMessage;
     public static String partyFaintedMessage;
     public static int minimumPlayerAmount;
     public static int minimumQueueSize;
@@ -32,10 +34,12 @@ public class ConfigGetters {
         healBeforeBattle = ShowdownELO.configManager.getConfigNode(0, "Heal").getBoolean();
         levelCaps = ShowdownELO.configManager.getConfigNode(0, "Level-Caps").getList(TypeToken.of(String.class));
         alreadyBattlingMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "Already-Battling").getString();
+        alreadyQueuedMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "Already-Queued").getString();
         blacklistedPokemonMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "Blacklisted-Pokemon").getString();
         eloLoseMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "ELO-Lose").getString();
         eloWinMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "ELO-Win").getString();
         levelCapMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "Level-Cap").getString();
+        queueExpiredMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "Queue-Expired").getString();
         partyFaintedMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "Party-Fainted").getString();
         minimumPlayerAmount = ShowdownELO.configManager.getConfigNode(0, "Minimum-Player-Amount").getInt();
         minimumQueueSize = ShowdownELO.configManager.getConfigNode(0, "Minimum-Queue-Size").getInt();
