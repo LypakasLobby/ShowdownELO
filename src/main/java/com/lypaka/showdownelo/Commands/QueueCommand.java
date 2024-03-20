@@ -1,6 +1,7 @@
 package com.lypaka.showdownelo.Commands;
 
 import com.lypaka.lypakautils.FancyText;
+import com.lypaka.lypakautils.Listeners.JoinListener;
 import com.lypaka.lypakautils.MiscHandlers.PixelmonHelpers;
 import com.lypaka.showdownelo.ConfigGetters;
 import com.lypaka.showdownelo.EloPlayer;
@@ -38,6 +39,12 @@ public class QueueCommand {
                                                                 if (c.getSource().getEntity() instanceof ServerPlayerEntity) {
 
                                                                     ServerPlayerEntity player = (ServerPlayerEntity) c.getSource().getEntity();
+                                                                    if (JoinListener.playerMap.size() < ConfigGetters.minimumPlayerAmount) {
+
+                                                                        player.sendMessage(FancyText.getFormattedText("&cNot enough players online to create a queue!"), player.getUUID());
+                                                                        return 0;
+
+                                                                    }
                                                                     EloPlayer eloPlayer = ShowdownELO.playerMap.get(player.getUUID());
                                                                     if (eloPlayer.isQueued()) {
 

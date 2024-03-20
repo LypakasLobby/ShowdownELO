@@ -40,6 +40,7 @@ public class TimerHandlers {
                     List<EloPlayer> players = entry.getValue();
 
                     ArrayList<EloPlayer> copy = new ArrayList<>(players);
+                    if (copy.size() < ConfigGetters.minimumQueueSize) continue;
                     do {
 
                         EloPlayer random1 = RandomHelper.getRandomElementFromList(copy);
