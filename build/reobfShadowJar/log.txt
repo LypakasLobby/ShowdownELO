@@ -110,6 +110,7 @@ Writing Output: C:\Users\ryan9\Documents\GitHub\ShowdownELO\build\reobfShadowJar
   com/lypaka/showdownelo/API/
   com/lypaka/showdownelo/API/ELOUpdateEvent.class
   com/lypaka/showdownelo/Commands/
+  com/lypaka/showdownelo/Commands/ELOCommand.class
   com/lypaka/showdownelo/Commands/QueueCommand.class
   com/lypaka/showdownelo/Commands/ReloadCommand.class
   com/lypaka/showdownelo/Commands/ShowdownELOCommand.class

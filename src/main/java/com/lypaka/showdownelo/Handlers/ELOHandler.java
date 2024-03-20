@@ -59,6 +59,9 @@ public class ELOHandler {
 
         }
 
+        winnerELO.save();
+        loserELO.save();
+
         ELOUpdateEvent winnerUpdateEvent = new ELOUpdateEvent(winner, currentWinnerELORating, newWinnerELO);
         MinecraftForge.EVENT_BUS.post(winnerUpdateEvent);
         ELOUpdateEvent loserUpdateEvent = new ELOUpdateEvent(loser, currentLoserELORating, newLoserELO);

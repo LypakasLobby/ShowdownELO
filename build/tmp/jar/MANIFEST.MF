@@ -5,5 +5,5 @@ Specification-Version: 1
 Implementation-Title: ShowdownELO
 Implementation-Version: 1.0.0-EARLY-ALPHA-UNSTABLE
 Implementation-Vendor: 
-Implementation-Timestamp: 2024-03-20T08:56:35-0500
+Implementation-Timestamp: 2024-03-20T09:09:42-0500
 
