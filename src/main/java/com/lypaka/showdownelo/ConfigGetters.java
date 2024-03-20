@@ -19,6 +19,7 @@ public class ConfigGetters {
     public static String levelCapMessage;
     public static String queueExpiredMessage;
     public static String partyFaintedMessage;
+    public static String successfulQueueMessage;
     public static int minimumPlayerAmount;
     public static int minimumQueueSize;
     public static int queueExpirationTime;
@@ -41,6 +42,7 @@ public class ConfigGetters {
         levelCapMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "Level-Cap").getString();
         queueExpiredMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "Queue-Expired").getString();
         partyFaintedMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "Party-Fainted").getString();
+        successfulQueueMessage = ShowdownELO.configManager.getConfigNode(0, "Messages", "Successfully-Queued").getString();
         minimumPlayerAmount = ShowdownELO.configManager.getConfigNode(0, "Minimum-Player-Amount").getInt();
         minimumQueueSize = ShowdownELO.configManager.getConfigNode(0, "Minimum-Queue-Size").getInt();
         queueExpirationTime = ShowdownELO.configManager.getConfigNode(0, "Queue-Expiration").getInt();

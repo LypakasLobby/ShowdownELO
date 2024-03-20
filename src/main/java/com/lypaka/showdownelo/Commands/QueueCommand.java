@@ -4,6 +4,7 @@ import com.lypaka.lypakautils.FancyText;
 import com.lypaka.lypakautils.MiscHandlers.PixelmonHelpers;
 import com.lypaka.showdownelo.ConfigGetters;
 import com.lypaka.showdownelo.EloPlayer;
+import com.lypaka.showdownelo.Handlers.BattleHandler;
 import com.lypaka.showdownelo.Handlers.TeamValidator;
 import com.lypaka.showdownelo.ShowdownELO;
 import com.mojang.brigadier.CommandDispatcher;
@@ -14,6 +15,7 @@ import net.minecraft.command.Commands;
 import net.minecraft.command.ISuggestionProvider;
 import net.minecraft.entity.player.ServerPlayerEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QueueCommand {
@@ -54,16 +56,34 @@ public class QueueCommand {
 
                                                                         }
 
+                                                                        if (!TeamValidator.teamPassesBlacklist(team)) {
 
+                                                                            player.sendMessage(FancyText.getFormattedText(ConfigGetters.blacklistedPokemonMessage), player.getUUID());
+                                                                            return 0;
+
+                                                                        }
+
+                                                                        eloPlayer.setQueued(true);
+                                                                        List<EloPlayer> players = new ArrayList<>();
+                                                                        if (BattleHandler.levelCapQueueMap.containsKey(levelCap)) {
+
+                                                                            players = BattleHandler.levelCapQueueMap.get(levelCap);
+
+                                                                        }
+                                                                        players.add(eloPlayer);
+                                                                        BattleHandler.levelCapQueueMap.put(levelCap, players);
+                                                                        player.sendMessage(FancyText.getFormattedText(ConfigGetters.successfulQueueMessage), player.getUUID());
 
                                                                     }
 
                                                                 }
 
+                                                                return 1;
+
                                                             })
                                             )
                             )
-            )
+            );
 
         }
 

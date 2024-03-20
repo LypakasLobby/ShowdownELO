@@ -28,10 +28,6 @@ public class ShowdownELO {
     /**
      * TODO
      *
-     * Finish QueueCommand
-     * Finish timer handlers
-     *      design a way to enforce (and then disable when needed) a fair pairing system based on ELO ratings
-     * Register event listeners because I'm an idiot and forgot to do that before last commit
      * Look into ***POTENTIALLY*** making a scoreboard/GUI for viewing top players in each level cap/tier
      *
      */

@@ -14,6 +14,7 @@ public class BattleHandler {
 
     public static List<EloBattle> eloBattles = new ArrayList<>();
     public static Map<String, List<EloPlayer>> levelCapQueueMap = new HashMap<>();
+    public static Map<String, Map<EloPlayer, EloPlayer>> battleQueueMap = new HashMap<>();
 
     public static boolean isELOBattle (BattleController bc) {
 

@@ -1,5 +1,7 @@
 package com.lypaka.showdownelo;
 
+import net.minecraft.entity.player.ServerPlayerEntity;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
