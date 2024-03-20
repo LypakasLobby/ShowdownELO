@@ -2,12 +2,15 @@ package com.lypaka.showdownelo.Listeners;
 
 import com.google.common.reflect.TypeToken;
 import com.lypaka.showdownelo.EloPlayer;
+import com.lypaka.showdownelo.Handlers.BattleHandler;
+import com.lypaka.showdownelo.Handlers.TimerHandlers;
 import com.lypaka.showdownelo.ShowdownELO;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import ninja.leaping.configurate.objectmapping.ObjectMappingException;
 
+import java.util.List;
 import java.util.Map;
 
 public class LoginListener {
@@ -30,6 +33,27 @@ public class LoginListener {
             eloPlayer.updatePlayerName(player.getName().getString());
 
         }
+
+    }
+
+    @SubscribeEvent
+    public void onPlayerLeave (PlayerEvent.PlayerLoggedOutEvent event) {
+
+        ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
+        EloPlayer eloPlayer = ShowdownELO.playerMap.get(player.getUUID());
+
+        eloPlayer.setQueued(false);
+        TimerHandlers.useUnfairPairingMap.entrySet().removeIf(e -> e.getKey() == eloPlayer);
+        TimerHandlers.playerQueueTimerMap.entrySet().removeIf(e -> e.getKey() == eloPlayer);
+        BattleHandler.levelCapQueueMap.entrySet().removeIf(e -> {
+
+            List<EloPlayer> players = e.getValue();
+            players.removeIf(entry -> entry.getUUID().toString().equalsIgnoreCase(player.getUUID().toString()));
+            e.setValue(players);
+            return false;
+
+        });
+        ShowdownELO.playerMap.entrySet().removeIf(e -> e.getKey().toString().equalsIgnoreCase(eloPlayer.getUUID().toString()));
 
     }
 
