@@ -21,6 +21,7 @@ public class ShowdownELOCommand {
         new ELOCommand(event.getDispatcher());
         new QueueCommand(event.getDispatcher());
         new ReloadCommand(event.getDispatcher());
+        new SetCommand(event.getDispatcher());
 
         ConfigCommand.register(event.getDispatcher());
 
