@@ -1,5 +1,6 @@
 package com.lypaka.showdownelo.Handlers;
 
+import com.lypaka.lypakautils.FancyText;
 import com.lypaka.showdownelo.API.ELOUpdateEvent;
 import com.lypaka.showdownelo.EloPlayer;
 import com.lypaka.showdownelo.ConfigGetters;
@@ -66,6 +67,9 @@ public class ELOHandler {
         MinecraftForge.EVENT_BUS.post(winnerUpdateEvent);
         ELOUpdateEvent loserUpdateEvent = new ELOUpdateEvent(loser, currentLoserELORating, newLoserELO);
         MinecraftForge.EVENT_BUS.post(loserUpdateEvent);
+
+        winner.sendMessage(FancyText.getFormattedText("&eELO: " + currentWinnerELORating + " --> " + newWinnerELO), winner.getUUID());
+        loser.sendMessage(FancyText.getFormattedText("&eELO: " + currentLoserELORating + " --> " + newLoserELO), loser.getUUID());
 
     }
 
