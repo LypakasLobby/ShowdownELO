@@ -17,6 +17,7 @@ public class ShowdownELOCommand {
     @SubscribeEvent
     public static void onCommandRegistration (RegisterCommandsEvent event) {
 
+        new CancelCommand(event.getDispatcher());
         new ELOCommand(event.getDispatcher());
         new QueueCommand(event.getDispatcher());
         new ReloadCommand(event.getDispatcher());
