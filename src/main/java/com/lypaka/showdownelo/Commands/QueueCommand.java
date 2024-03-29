@@ -63,7 +63,7 @@ public class QueueCommand {
                                                                                         String levelCap = StringArgumentType.getString(c, "levelcap");
                                                                                         List<Pokemon> team = PixelmonHelpers.getTeam(player);
 
-                                                                                        if (!TeamValidator.passesGeneralChecks(player, levelCap)) return 0;
+                                                                                        if (!TeamValidator.passesGeneralChecks(player, levelCap, true)) return 0;
 
                                                                                         if (!TeamValidator.teamPassesLevelCapRequirements(team, levelCap)) {
 
@@ -131,7 +131,7 @@ public class QueueCommand {
                                                                                         String levelCap = ConfigGetters.defaultTier;
                                                                                         List<Pokemon> team = PixelmonHelpers.getTeam(player);
 
-                                                                                        if (!TeamValidator.passesGeneralChecks(player, levelCap)) return 0;
+                                                                                        if (!TeamValidator.passesGeneralChecks(player, levelCap, true)) return 0;
 
                                                                                         if (!TeamValidator.teamPassesLevelCapRequirements(team, levelCap)) {
 
@@ -194,7 +194,7 @@ public class QueueCommand {
                                                                         String levelCap = ConfigGetters.defaultTier;
                                                                         List<Pokemon> team = PixelmonHelpers.getTeam(player);
 
-                                                                        if (!TeamValidator.passesGeneralChecks(player, levelCap)) return 0;
+                                                                        if (!TeamValidator.passesGeneralChecks(player, levelCap, true)) return 0;
 
                                                                         if (!TeamValidator.teamPassesLevelCapRequirements(team, levelCap)) {
 

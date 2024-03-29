@@ -13,9 +13,17 @@ import java.util.List;
 
 public class TeamValidator {
 
-    public static boolean passesGeneralChecks (ServerPlayerEntity player, String levelCap) {
+    public static boolean passesGeneralChecks (ServerPlayerEntity player, String levelCap, boolean isQueueing) {
 
         PlayerPartyStorage storage = StorageProxy.getParty(player);
+        if (isQueueing) {
+
+            List<Pokemon> team = storage.getTeam();
+            QueueEvent event = new QueueEvent(player, team, levelCap);
+            MinecraftForge.EVENT_BUS.post(event);
+            return !event.isCanceled();
+
+        }
         if (storage.getFirstBattleReadyPokemon() == null) {
 
             player.sendMessage(FancyText.getFormattedText(ConfigGetters.partyFaintedMessage), player.getUUID());
@@ -23,10 +31,7 @@ public class TeamValidator {
 
         }
 
-        List<Pokemon> team = storage.getTeam();
-        QueueEvent event = new QueueEvent(player, team, levelCap);
-        MinecraftForge.EVENT_BUS.post(event);
-        return !event.isCanceled();
+        return true;
 
     }
 

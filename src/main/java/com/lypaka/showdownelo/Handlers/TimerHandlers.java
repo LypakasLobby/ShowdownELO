@@ -55,6 +55,19 @@ public class TimerHandlers {
                             ServerPlayerEntity p2 = JoinListener.playerMap.get(random2.getUUID());
                             List<Pokemon> team2 = PixelmonHelpers.getTeam(p2);
 
+                            if (!TeamValidator.passesGeneralChecks(p1, levelCap, false)) {
+
+                                p1.sendMessage(FancyText.getFormattedText(ConfigGetters.partyFaintedMessage), p1.getUUID());
+                                continue;
+
+                            }
+                            if (!TeamValidator.passesGeneralChecks(p2, levelCap, false)) {
+
+                                p2.sendMessage(FancyText.getFormattedText(ConfigGetters.partyFaintedMessage), p2.getUUID());
+                                continue;
+
+                            }
+
                             if (TeamValidator.teamPassesLevelCapRequirements(team1, levelCap) && TeamValidator.teamPassesLevelCapRequirements(team2, levelCap)) {
 
                                 if (TeamValidator.teamPassesBlacklist(team1) && TeamValidator.teamPassesBlacklist(team2)) {
