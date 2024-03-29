@@ -99,6 +99,25 @@ public class TeamValidator {
                 if (!passes) break;
 
             }
+            if (ConfigGetters.blacklist.contains("species:") || ConfigGetters.blacklist.contains("Species:")) {
+
+                for (String s : ConfigGetters.blacklist) {
+
+                    if (s.contains("Species:") || s.contains("species:")) {
+
+                        String species = s.replace("Species:", "").replace("species:", "");
+                        if (p.getSpecies().getName().equalsIgnoreCase(species)) {
+
+                            passes = false;
+                            break;
+
+                        }
+
+                    }
+
+                }
+
+            }
 
         }
 
