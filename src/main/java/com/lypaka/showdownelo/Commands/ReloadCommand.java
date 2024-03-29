@@ -3,6 +3,8 @@ package com.lypaka.showdownelo.Commands;
 import com.lypaka.lypakautils.FancyText;
 import com.lypaka.lypakautils.MiscHandlers.PermissionHandler;
 import com.lypaka.showdownelo.ConfigGetters;
+import com.lypaka.showdownelo.Handlers.BattleHandler;
+import com.lypaka.showdownelo.Handlers.TimerHandlers;
 import com.lypaka.showdownelo.ShowdownELO;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandSource;
@@ -36,6 +38,9 @@ public class ReloadCommand {
 
                                                 try {
 
+                                                    TimerHandlers.useUnfairPairingMap.clear();
+                                                    TimerHandlers.playerQueueTimerMap.clear();
+                                                    BattleHandler.levelCapQueueMap.clear();
                                                     ShowdownELO.configManager.load();
                                                     ConfigGetters.load();
                                                     c.getSource().sendSuccess(FancyText.getFormattedText("&aSuccessfully reloaded ShowdownELO!"), true);
