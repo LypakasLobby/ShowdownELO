@@ -48,7 +48,7 @@ public class BattleEndListener {
         }
 
         boolean draw = event.getResult(winner).isPresent() && event.getResult(winner).get() == BattleResults.DRAW;
-        ELOHandler.updateELOs(winner, loser, levelCap, draw);
+        ELOHandler.updateELOs(winner, loser, levelCap, draw, bc);
 
     }
 

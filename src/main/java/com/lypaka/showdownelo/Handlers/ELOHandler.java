@@ -5,6 +5,7 @@ import com.lypaka.showdownelo.API.ELOUpdateEvent;
 import com.lypaka.showdownelo.EloPlayer;
 import com.lypaka.showdownelo.ConfigGetters;
 import com.lypaka.showdownelo.ShowdownELO;
+import com.pixelmonmod.pixelmon.battles.controller.BattleController;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraftforge.common.MinecraftForge;
 import net.objecthunter.exp4j.Expression;
@@ -12,7 +13,7 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 
 public class ELOHandler {
 
-    public static void updateELOs (ServerPlayerEntity winner, ServerPlayerEntity loser, String levelCap, boolean draw) {
+    public static void updateELOs (ServerPlayerEntity winner, ServerPlayerEntity loser, String levelCap, boolean draw, BattleController bc) {
 
         EloPlayer winnerELO = ShowdownELO.playerMap.get(winner.getUUID());
         EloPlayer loserELO = ShowdownELO.playerMap.get(loser.getUUID());
@@ -70,6 +71,7 @@ public class ELOHandler {
 
         winner.sendMessage(FancyText.getFormattedText("&eELO: " + currentWinnerELORating + " --> " + newWinnerELO), winner.getUUID());
         loser.sendMessage(FancyText.getFormattedText("&eELO: " + currentLoserELORating + " --> " + newLoserELO), loser.getUUID());
+        BattleHandler.removeEloBattle(bc);
 
     }
 
