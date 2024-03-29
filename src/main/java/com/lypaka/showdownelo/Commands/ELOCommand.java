@@ -1,12 +1,14 @@
 package com.lypaka.showdownelo.Commands;
 
 import com.lypaka.lypakautils.FancyText;
+import com.lypaka.showdownelo.ConfigGetters;
 import com.lypaka.showdownelo.EloPlayer;
 import com.lypaka.showdownelo.ShowdownELO;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
+import net.minecraft.command.ISuggestionProvider;
 import net.minecraft.entity.player.ServerPlayerEntity;
 
 public class ELOCommand {
@@ -21,6 +23,9 @@ public class ELOCommand {
                                     Commands.literal("check")
                                             .then(
                                                     Commands.argument("levelCap", StringArgumentType.string())
+                                                            .suggests(
+                                                                    ((context, builder) -> ISuggestionProvider.suggest(ConfigGetters.levelCaps, builder))
+                                                            )
                                                             .executes(c -> {
 
                                                                 if (c.getSource().getEntity() instanceof ServerPlayerEntity) {
